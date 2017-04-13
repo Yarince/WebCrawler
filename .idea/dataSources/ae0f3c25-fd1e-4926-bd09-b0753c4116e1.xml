@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="crawler@localhost">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+    <root id="1"/>
+    <schema id="2" parent="1" name="information_schema">
+      <Current>1</Current>
+    </schema>
+    <schema id="3" parent="1" name="itemdb"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="spotitube"/>
+    <schema id="7" parent="1" name="sys"/>
+    <schema id="8" parent="1" name="crawler">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <table id="9" parent="8" name="content"/>
+    <table id="10" parent="8" name="record"/>
+    <column id="11" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="12" parent="9" name="phone">
+      <Position>2</Position>
+      <DataType>mediumtext|0</DataType>
+    </column>
+    <column id="13" parent="9" name="RecordID">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <key id="14" parent="9" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="15" parent="9" name="content_record_RecordID_fk">
+      <ColNames>id</ColNames>
+      <RefSchemaName>crawler</RefSchemaName>
+      <RefTableName>record</RefTableName>
+      <RefColNames>RecordID</RefColNames>
+    </foreign-key>
+    <column id="16" parent="10" name="RecordID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="17" parent="10" name="URL">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="18" parent="10" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>RecordID</ColNames>
+      <Primary>1</Primary>
+    </key>
+  </database-model>
+</dataSource>
