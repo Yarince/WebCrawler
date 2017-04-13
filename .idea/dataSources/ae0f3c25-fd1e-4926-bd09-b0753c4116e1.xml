@@ -5,54 +5,45 @@
     <schema id="2" parent="1" name="information_schema">
       <Current>1</Current>
     </schema>
-    <schema id="3" parent="1" name="itemdb"/>
-    <schema id="4" parent="1" name="mysql"/>
-    <schema id="5" parent="1" name="performance_schema"/>
-    <schema id="6" parent="1" name="spotitube"/>
-    <schema id="7" parent="1" name="sys"/>
-    <schema id="8" parent="1" name="crawler">
+    <schema id="3" parent="1" name="mysql"/>
+    <schema id="4" parent="1" name="performance_schema"/>
+    <schema id="5" parent="1" name="spotitube"/>
+    <schema id="6" parent="1" name="sys"/>
+    <schema id="7" parent="1" name="crawler">
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <table id="9" parent="8" name="content"/>
-    <table id="10" parent="8" name="record"/>
-    <column id="11" parent="9" name="id">
+    <schema id="8" parent="1" name="sakila"/>
+    <schema id="9" parent="1" name="world"/>
+    <table id="10" parent="7" name="content"/>
+    <table id="11" parent="7" name="record"/>
+    <column id="12" parent="10" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="12" parent="9" name="phone">
+    <column id="13" parent="10" name="H1">
       <Position>2</Position>
-      <DataType>mediumtext|0</DataType>
+      <DataType>varchar(1000)|0</DataType>
     </column>
-    <column id="13" parent="9" name="RecordID">
-      <Position>3</Position>
-      <DataType>int(11)|0</DataType>
-    </column>
-    <key id="14" parent="9" name="PRIMARY">
+    <key id="14" parent="10" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="15" parent="9" name="content_record_RecordID_fk">
-      <ColNames>id</ColNames>
-      <RefSchemaName>crawler</RefSchemaName>
-      <RefTableName>record</RefTableName>
-      <RefColNames>RecordID</RefColNames>
-    </foreign-key>
-    <column id="16" parent="10" name="RecordID">
+    <column id="15" parent="11" name="RecordID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="17" parent="10" name="URL">
+    <column id="16" parent="11" name="URL">
       <Position>2</Position>
       <DataType>text|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="18" parent="10" name="PRIMARY">
+    <key id="17" parent="11" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>RecordID</ColNames>
       <Primary>1</Primary>
