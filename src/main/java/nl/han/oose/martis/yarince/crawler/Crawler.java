@@ -1,30 +1,34 @@
-package nl.han.oose.martis.yarince;
+package nl.han.oose.martis.yarince.crawler;
 
+import nl.han.oose.martis.yarince.DB;
+import nl.han.oose.martis.yarince.parser.IParser;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
-import java.sql.SQLException;
 import java.util.concurrent.RecursiveAction;
-
-import static nl.han.oose.martis.yarince.Parser.Crawl;
 
 /**
  * Project name: WebCrawler.
  * Created by Yarince on 12/04/2017.
  */
-public class Crawler extends RecursiveAction {
+
+@Default
+public class Crawler extends RecursiveAction implements ICrawler {
 
     private final String LONG_URL;
     private final String CONTAINS;
 
-    Crawler(String longUrl, String contains) {
+    @Inject
+    private IParser parser;
+
+    public Crawler(String longUrl, String contains) {
         this.LONG_URL = longUrl;
         this.CONTAINS = contains;
     }
 
+    @Override
     public synchronized void processPage(String LongURL, String contains) {
 
         DB db = new DB();
@@ -46,7 +50,7 @@ public class Crawler extends RecursiveAction {
 
             // get all links and recursively call the processPage method
             Elements questions = doc.select("a[href]");
-            Crawl(doc);
+            parser.crawl(doc);
             for (Element link : questions) {
                 if (link.attr("href").contains(contains))
                     processPage(link.attr("abs:href"), contains);
